@@ -1,5 +1,15 @@
 ﻿# MoviesFlutter
 
+
+# ScreenShots
+
+Tela de Login.
+<img width="648" height="680" alt="image" src="https://github.com/user-attachments/assets/e86d4219-149a-4dbb-806c-81e5bd0bb4de" />
+
+Cards de filmes.
+<img width="648" height="680" alt="image" src="https://github.com/user-attachments/assets/3ebcadd8-b804-4fe8-9986-e4afdbe011e3" />
+
+
 O projeto utiliza autenticação baseada em JWT para proteger as rotas de usuário e consome a API do The Movie Database (TMDB) para obter informações sobre os filmes.
 
 Funcionalidades
@@ -126,4 +136,5 @@ D. Rode o aplicativo:
 Certifique-se de que um emulador está rodando ou um dispositivo está conectado e execute:
 
 flutter run
+
 
