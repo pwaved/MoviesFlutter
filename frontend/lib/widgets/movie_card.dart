@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:movies_fullstack/models/movie.dart';
 import 'package:movies_fullstack/services/favorites_service.dart';
@@ -9,55 +10,62 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Widget de placeholder para exibir enquanto a imagem carrega ou se não houver imagem
     Widget placeholder = Container(
       color: Colors.grey.shade800,
       child: const Center(child: Icon(Icons.movie, color: Colors.white, size: 50)),
     );
 
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          // Lógica para exibir imagem ou placeholder
-          movie.posterPath != null
-              ? Image.network(
-                  movie.fullPosterUrl,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => placeholder,
-                  loadingBuilder: (context, child, progress) {
-                    if (progress == null) return child;
-                    return const Center(child: CircularProgressIndicator());
-                  },
-                )
-              : placeholder,
-          
-          // Botão para favoritar
-          Positioned(
-            top: 4,
-            right: 4,
-            child: Consumer<FavoritesService>(
-              builder: (context, favoritesService, child) {
-                final isFavorite = favoritesService.isFavorite(movie.id);
-                return IconButton(
-                  icon: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: isFavorite ? Colors.red : Colors.white,
-                    size: 30,
-                  ),
-                  onPressed: () {
-                    if (isFavorite) {
-                      favoritesService.removeFavorite(movie.id);
-                    } else {
-                      favoritesService.addFavorite(movie.id);
-                    }
-                  },
-                );
-              },
+    // ESTA É A PARTE IMPORTANTE:
+    // O GestureDetector detecta o toque do usuário.
+    return GestureDetector(
+      onTap: () {
+        // A ação de navegar para a tela de detalhes.
+        context.push('/movie', extra: movie);
+      },
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            // Lógica da imagem e placeholder
+            movie.posterPath != null
+                ? Image.network(
+                    movie.fullPosterUrl,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => placeholder,
+                    loadingBuilder: (context, child, progress) {
+                      if (progress == null) return child;
+                      return const Center(child: CircularProgressIndicator());
+                    },
+                  )
+                : placeholder,
+            
+            // Botão de favoritar
+            Positioned(
+              top: 4,
+              right: 4,
+              child: Consumer<FavoritesService>(
+                builder: (context, favoritesService, child) {
+                  final isFavorite = favoritesService.isFavorite(movie.id);
+                  return IconButton(
+                    icon: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? Colors.red : Colors.white,
+                      size: 30,
+                    ),
+                    onPressed: () {
+                      if (isFavorite) {
+                        favoritesService.removeFavorite(movie.id);
+                      } else {
+                        favoritesService.addFavorite(movie.id);
+                      }
+                    },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

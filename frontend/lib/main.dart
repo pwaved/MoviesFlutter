@@ -5,8 +5,8 @@ import 'package:movies_fullstack/services/auth_service.dart';
 import 'package:movies_fullstack/services/favorites_service.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
-  dotenv.load(fileName: ".env");
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   runApp(
     MultiProvider(
       providers: [
