@@ -22,10 +22,10 @@ class MovieDetailScreen extends StatelessWidget {
             Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
-                  maxHeight: 450, // Limita a altura do card
+                  maxHeight: 450, 
                 ),
                 child: AspectRatio(
-                  aspectRatio: 2 / 3, // Proporção padrão de pôster
+                  aspectRatio: 2 / 3, 
                   child: MovieCard(movie: movie),
                 ),
               ),
@@ -46,7 +46,7 @@ class MovieDetailScreen extends StatelessWidget {
                   : 'Sinopse não disponível.',
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: Colors.white70,
-                height: 1.5, // Melhora a legibilidade do texto
+                height: 1.5,
               ),
             ),
           ],

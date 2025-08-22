@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 class DioClient {
-  // Instância singleton do Dio
   static final Dio _dio = Dio(
     BaseOptions(
       baseUrl: 'http://192.168.1.3:3000/api', 
@@ -10,6 +9,5 @@ class DioClient {
     ),
   )..interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
 
-  // Getter para acessar a instância do Dio
   static Dio get instance => _dio;
 }

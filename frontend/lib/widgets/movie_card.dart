@@ -15,11 +15,8 @@ class MovieCard extends StatelessWidget {
       child: const Center(child: Icon(Icons.movie, color: Colors.white, size: 50)),
     );
 
-    // ESTA É A PARTE IMPORTANTE:
-    // O GestureDetector detecta o toque do usuário.
     return GestureDetector(
       onTap: () {
-        // A ação de navegar para a tela de detalhes.
         context.push('/movie', extra: movie);
       },
       child: Card(
@@ -27,7 +24,6 @@ class MovieCard extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            // Lógica da imagem e placeholder
             movie.posterPath != null
                 ? Image.network(
                     movie.fullPosterUrl,

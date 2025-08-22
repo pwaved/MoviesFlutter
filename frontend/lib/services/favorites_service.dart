@@ -31,7 +31,7 @@ class FavoritesService extends ChangeNotifier {
     if (_authService?.token == null) return;
     
     _isLoading = true;
-    _errorMessage = null; // Limpa erros anteriores
+    _errorMessage = null;
     notifyListeners();
 
     try {

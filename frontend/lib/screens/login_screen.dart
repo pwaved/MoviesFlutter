@@ -22,7 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
             _emailController.text,
             _passwordController.text,
           );
-      // O GoRouter cuidará do redirecionamento automático
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
