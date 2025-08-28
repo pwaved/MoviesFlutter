@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "403559483702",
+    "project_id": "cineflutterdb",
+    "storage_bucket": "cineflutterdb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403559483702:android:534fd28ca14fdfc7958b97",
+        "android_client_info": {
+          "package_name": "com.example.movies_fullstack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkA2BrnNekKmz7CTwqd917p4CUpb_Ayeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403559483702:android:8f094e69abf88eb8958b97",
+        "android_client_info": {
+          "package_name": "com.moviesflutter.windows.placeholder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkA2BrnNekKmz7CTwqd917p4CUpb_Ayeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

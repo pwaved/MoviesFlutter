@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Serviço do Backend (API)
+  backend:
+    build:
+      context: ./backend 
+    container_name: cineflutter_api
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db 
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - DB_DIALECT=${DB_DIALECT}
+      - JWT_SECRET=${JWT_SECRET}
+      - PORT=${PORT}
+    volumes:
+      # Monta a pasta local 'backend' no '/app' do contêiner para live-reload
+      - ./backend:/app
+      # Usa um volume anônimo para evitar que a pasta node_modules local sobrescreva a do contêiner
+      - /app/node_modules
+    # ESTA É A MUDANÇA PRINCIPAL:
+    # Roda o servidor de desenvolvimento (com nodemon e tsx) ao iniciar o contêiner.
+    command: npm run dev
+
+  # Serviço do Banco de Dados PostgreSQL
+  db:
+    image: postgres:14-alpine
+    container_name: cineflutter_db
+    command: postgres -c listen_addresses='*'
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
