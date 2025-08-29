@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_fullstack/models/movie.dart';
-import 'package:movies_fullstack/screens/favorites_screen.dart';
-import 'package:movies_fullstack/screens/home_screen.dart';
-import 'package:movies_fullstack/screens/login_screen.dart';
-import 'package:movies_fullstack/screens/register_screen.dart';
+import 'package:movies_fullstack/screens/home_screen/favorites_screen.dart';
+import 'package:movies_fullstack/screens/home_screen/home_screen.dart';
+import 'package:movies_fullstack/screens/login_screen/login_screen.dart';
+import 'package:movies_fullstack/screens/login_screen/register_screen.dart';
 import 'package:movies_fullstack/services/auth_service.dart';
-import 'package:movies_fullstack/screens/movie_detail_screen.dart';
+import 'package:movies_fullstack/screens/home_screen/movie_detail_screen.dart';
 
 class AppRouter {
   final AuthService authService;

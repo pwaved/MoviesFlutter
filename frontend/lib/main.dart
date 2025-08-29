@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:io'; // Para detectar a plataforma
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +10,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'firebase_options.dart';
+import 'package:movies_fullstack/services/push_notification_service.dart';
 
 void main() {
   runZonedGuarded<Future<void>>(() async {
@@ -19,7 +20,11 @@ void main() {
       options: DefaultFirebaseOptions.currentPlatform,
     );
 
-    // Inicializa Crashlytics apenas para Android/iOS
+    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+       await PushNotificationService().initialize();
+    }
+
+
     if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
       FlutterError.onError = (errorDetails) {
         FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
@@ -44,11 +49,9 @@ void main() {
       ),
     );
   }, (error, stack) {
-    // Só registra no Crashlytics se suportado
     if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     } else {
-      // Log local para debug no Windows
       debugPrint('Erro capturado: $error\n$stack');
     }
   });
