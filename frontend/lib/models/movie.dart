@@ -1,5 +1,10 @@
+import 'package:floor/floor.dart';
+
+@entity
 class Movie {
+  @primaryKey
   final int id;
+
   final String title;
   final String overview;
   final String? posterPath;
@@ -20,12 +25,10 @@ class Movie {
     );
   }
 
-  // Getter para construir a URL completa do pôster
   String get fullPosterUrl {
     if (posterPath != null) {
       return 'https://image.tmdb.org/t/p/w500$posterPath';
     }
-    // Retorna uma URL de placeholder se não houver pôster
     return 'https://via.placeholder.com/500x750?text=No+Image';
   }
 }

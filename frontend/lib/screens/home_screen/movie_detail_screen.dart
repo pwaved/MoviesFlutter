@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_fullstack/models/movie.dart';
-import 'package:movies_fullstack/widgets/movie_card.dart';
+import 'package:movies_fullstack/widgets/movie_poster.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final Movie movie;
@@ -21,12 +21,10 @@ class MovieDetailScreen extends StatelessWidget {
             // Exibe o card do filme para uma melhor UI e consistência visual
             Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxHeight: 450, 
-                ),
+                constraints: const BoxConstraints(maxHeight: 450),
                 child: AspectRatio(
-                  aspectRatio: 2 / 3, 
-                  child: MovieCard(movie: movie),
+                  aspectRatio: 2 / 3,
+                  child: MoviePoster(posterUrl: movie.fullPosterUrl),
                 ),
               ),
             ),
