@@ -118,7 +118,7 @@ class _$MovieDao extends MovieDao {
         _movieInsertionAdapter = InsertionAdapter(
             database,
             'Movie',
-            (Movie item) => <String, Object?>{
+            (MovieModel item) => <String, Object?>{
                   'id': item.id,
                   'title': item.title,
                   'overview': item.overview,
@@ -132,12 +132,12 @@ class _$MovieDao extends MovieDao {
 
   final QueryAdapter _queryAdapter;
 
-  final InsertionAdapter<Movie> _movieInsertionAdapter;
+  final InsertionAdapter<MovieModel> _movieInsertionAdapter;
 
   @override
-  Stream<List<Movie>> getAllMoviesAsStream() {
+  Stream<List<MovieModel>> getAllMoviesAsStream() {
     return _queryAdapter.queryListStream('SELECT * FROM Movie',
-        mapper: (Map<String, Object?> row) => Movie(
+        mapper: (Map<String, Object?> row) => MovieModel(
             id: row['id'] as int,
             title: row['title'] as String,
             overview: row['overview'] as String,
@@ -152,7 +152,7 @@ class _$MovieDao extends MovieDao {
   }
 
   @override
-  Future<void> insertMovies(List<Movie> movies) async {
+  Future<void> insertMovies(List<MovieModel> movies) async {
     await _movieInsertionAdapter.insertList(movies, OnConflictStrategy.replace);
   }
 }
