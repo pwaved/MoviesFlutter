@@ -12,12 +12,10 @@ class MoviePoster extends StatelessWidget {
       child: Image.network(
         posterUrl,
         fit: BoxFit.cover,
-        // Shows a loading spinner while the image is loading
         loadingBuilder: (context, child, loadingProgress) {
           if (loadingProgress == null) return child;
           return const Center(child: CircularProgressIndicator());
         },
-        // Shows a placeholder icon if the image fails to load
         errorBuilder: (context, error, stackTrace) {
           return const Center(
             child: Icon(Icons.movie, size: 50, color: Colors.grey),

@@ -3,20 +3,20 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movies_fullstack/models/movie.dart';
+import 'package:movies_fullstack/features/movies/data/models/movie_model.dart';
 import 'package:movies_fullstack/services/favorites_service.dart';
-import 'package:movies_fullstack/widgets/movie_card.dart';
+import 'package:movies_fullstack/features/movies/presentation/widgets/movie_card.dart';
 import 'package:provider/provider.dart';
 
 class MockFavoritesService extends Mock implements FavoritesService {}
 
 void main() {
   late MockFavoritesService mockFavoritesService;
-  late Movie testMovie;
+  late MovieModel testMovie;
 
   setUp(() {
     mockFavoritesService = MockFavoritesService();
-    testMovie = Movie(
+    testMovie = const MovieModel(
       id: 1,
       title: 'Test Movie',
       overview: 'test movie.',
@@ -24,7 +24,7 @@ void main() {
     );
   });
 
-  Future<void> pumpWidget(WidgetTester tester, {required Movie movie}) async {
+  Future<void> pumpWidget(WidgetTester tester, {required MovieModel movie}) async {
     await tester.pumpWidget(
       ChangeNotifierProvider<FavoritesService>.value(
         value: mockFavoritesService,
@@ -41,7 +41,7 @@ void main() {
   group('MovieCard', () {
     testWidgets('displays placeholder when posterPath is null',
         (WidgetTester tester) async {
-      final movieWithoutPoster = Movie(id: 2, title: 'No Poster', overview: '');
+      final movieWithoutPoster = MovieModel(id: 2, title: 'No Poster', overview: '');
       
       when(() => mockFavoritesService.isFavorite(any())).thenReturn(false);
 

@@ -1,5 +1,3 @@
-// lib/core/di/injection_container.dart
-
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies_fullstack/api/backend_api_service.dart';
