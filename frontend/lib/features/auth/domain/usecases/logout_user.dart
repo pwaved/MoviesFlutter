@@ -1,4 +1,5 @@
-import '../repositories/auth_repository.dart';
+import 'package:movies_fullstack/features/auth/domain/repositories/auth_repository.dart';
+
 
 class LogoutUser {
   final AuthRepository repository;

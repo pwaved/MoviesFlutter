@@ -1,11 +1,9 @@
-// lib/features/auth/presentation/providers/auth_provider.dart
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies_fullstack/core/di/injection_container.dart';
-import '../../domain/entities/user_entity.dart';
-import '../../domain/usecases/get_logged_user.dart';
-import '../../domain/usecases/login_user.dart';
-import '../../domain/usecases/logout_user.dart';
+import 'package:movies_fullstack/features/auth/domain/entities/user_entity.dart';
+import 'package:movies_fullstack/features/auth/domain/usecases/get_logged_user.dart';
+import 'package:movies_fullstack/features/auth/domain/usecases/logout_user.dart';
+import 'package:movies_fullstack/features/auth/domain/usecases/login_user.dart';
 
 class AuthNotifier extends StateNotifier<AsyncValue<UserEntity?>> {
   final LoginUser loginUser;

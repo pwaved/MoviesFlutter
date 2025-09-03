@@ -1,5 +1,5 @@
 import 'package:movies_fullstack/api/backend_api_service.dart';
-import '../../domain/entities/user_entity.dart';
+import 'package:movies_fullstack/features/auth/domain/entities/user_entity.dart';
 
 class AuthRemoteDataSource {
   final BackendApiService api;

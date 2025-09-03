@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../domain/entities/user_entity.dart';
+import 'package:movies_fullstack/features/auth/domain/entities/user_entity.dart';
 
 class AuthLocalDataSource {
   static const _tokenKey = 'token';

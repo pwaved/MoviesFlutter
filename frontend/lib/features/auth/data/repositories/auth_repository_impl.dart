@@ -1,7 +1,7 @@
-import '../../domain/entities/user_entity.dart';
-import '../../domain/repositories/auth_repository.dart';
-import '../datasources/auth_local_data_source.dart';
-import '../datasources/auth_remote_data_source.dart';
+import 'package:movies_fullstack/features/auth/domain/entities/user_entity.dart';
+import 'package:movies_fullstack/features/auth/domain/repositories/auth_repository.dart';
+import 'package:movies_fullstack/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:movies_fullstack/features/auth/data/datasources/auth_remote_data_source.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
